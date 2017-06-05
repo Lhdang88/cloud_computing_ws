@@ -1,0 +1,33 @@
+{
+  "name": "dhbw-cloud-computing-workshop",
+  "description": "A simple Workshop app",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN BIOSLv4.txt",
+  "author": "Hai Dang Le <lhdang.88@gmail.com>",
+  "maintainers": [
+    "Hai Dang Le <lhdang.88@gmail.com>"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=7.0.0",
+    "npm": ">=3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lhdang88/cloud_computing_ws.git"
+  },
+  "docker": {
+    "repository": "https://hub.docker.com/r/lhdang88/dhbw/"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "keywords": [
+    "dhbw",
+    "workshop",
+    "chat"
+  ]
+}
