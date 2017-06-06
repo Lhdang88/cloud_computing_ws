@@ -5,15 +5,17 @@
 /**
  * dependencies - reference modules with require-keyword
  */
-let express = require('express');
-let env = require('./lib/environment');
-let api = require('./lib/api/base');
+const express = require('express');
+const bodyParser = require('body-parser');
+const env = require('./lib/environment');
+const api = require('./lib/api/base');
 
 /**
 * variables - here you can define local variables
 */
 //initialize the express http-module
 let app = express();
+app.use(bodyParser.json());
 
 // start the http-server on port:xxxx
 app.listen(env.port, function() {
