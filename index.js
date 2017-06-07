@@ -31,10 +31,19 @@ api.registerAPIs(app);
 function exitHandler(process, event) {
   console.log(`Event ${event.type} received`);
 
-  if(event.exit) {
-    console.log(`Shutting down app on ${env.hostname} ...`);
-    process.exit();
-  }
+  // closeDB Connection if present
+  const db = require('./lib/db/mongodb');
+  db.close()
+  .catch(function (err) {
+    console.error('Could not close DB Connection');
+    console.error(err);
+  })
+  .then(function () {
+    if(event.exit) {
+      console.log(`Shutting down app on ${env.hostname} ...`);
+      process.exit();
+    }
+  });
 }
 
 // Catches ctrl+c event

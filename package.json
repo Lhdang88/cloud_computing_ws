@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "express": "^4.15.3",
-    "body-parser": "^1.17.2"
+    "body-parser": "^1.17.2",
+    "mongodb": "^2.2.24"
   },
   "keywords": [
     "dhbw",
