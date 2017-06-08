@@ -28,8 +28,8 @@ api.registerAPIs(app);
 /**
  * exit handling - the exitHandler function is called when the events are fired.
  */
-function exitHandler(process, event) {
-  console.log(`Event ${event.type} received`);
+function exitHandler(process, event, err) {
+  console.log(`Event ${event.type} received, ${err}`);
 
   // closeDB Connection if present
   const db = require('./lib/db/mongodb');

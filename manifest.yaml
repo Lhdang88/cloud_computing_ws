@@ -1,0 +1,11 @@
+---
+applications:
+- name: dhbw-chat-demo
+  memory: 512M
+  disk_quota: 512MB
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+  command: node index.js
+  env:
+    MONGO_DB: mongodb://CloudFoundry_pd4qhumn_q48jq8b7_eb0jljqv:NeSd4SJkfG1TrNh7Pjbn1H_rxhgH4PmL@ds115352.mlab.com:15352/CloudFoundry_pd4qhumn_q48jq8b7
+  services:
+    - dhbw-mongo
