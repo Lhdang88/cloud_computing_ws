@@ -6,6 +6,7 @@
  * dependencies - reference modules with require-keyword
  */
 const express = require('express');
+const expressWS = require('express-ws');
 const bodyParser = require('body-parser');
 const env = require('./lib/environment');
 const api = require('./lib/api/base');
@@ -15,6 +16,7 @@ const api = require('./lib/api/base');
 */
 //initialize the express http-module
 let app = express();
+expressWS(app);
 app.use(bodyParser.json());
 
 // start the http-server on port:xxxx
