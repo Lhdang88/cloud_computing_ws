@@ -16,7 +16,7 @@ const api = require('./lib/api/base');
 */
 //initialize the express http-module
 let app = express();
-expressWS(app);
+const ws = expressWS(app);
 app.use(bodyParser.json());
 
 // start the http-server on port:xxxx
@@ -25,13 +25,13 @@ app.listen(env.port, function() {
 });
 
 // register APIs - register all files under /lib/api/...
-api.registerAPIs(app);
+api.registerAPIs(app, ws);
 
 /**
  * exit handling - the exitHandler function is called when the events are fired.
  */
-function exitHandler(process, event) {
-  console.log(`Event ${event.type} received`);
+function exitHandler(process, event, err) {
+  console.warn(`Event ${event.type} received. ${err}`);
 
   // closeDB Connection if present
   const db = require('./lib/db/mongodb');
@@ -51,4 +51,4 @@ function exitHandler(process, event) {
 // Catches ctrl+c event
 process.on('SIGINT', exitHandler.bind(null, process, { exit: true, type: 'SIGINT' }));
 // Catches uncaught exceptions
-process.on('uncaughtException', exitHandler.bind(null, process, { exit: true, type: 'uncaughtException' }));
+process.on('uncaughtException', exitHandler.bind(null, process, { exit: false, type: 'uncaughtException' }));
