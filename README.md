@@ -17,13 +17,12 @@ REST API:
 
 Websocket API:
 
-connect to Websocket Endpoint /chat
+Connect to Websocket Endpoint /chat
 
-Websocket are in JSON format.
+Websocket are in JSON format. Declare a property named 'action' to invoke functionalities:
 
-Use actions to invoke functionalities:
+* Posting Message in Room or Posting private Message:
 
-Posting Message in Room or Posting private Message:
 ```javascript
 {
   "action": ["postMessage" || "postPrivateMessage"],
@@ -34,19 +33,18 @@ Posting Message in Room or Posting private Message:
   "meta": { "foo": "bar"} // additional data to pass
 }
 ```
-returns the message posted and broadcast the posted message to users via websocket
+returns the message posted and broadcasts the message to users via websocket
 
-
-List all chat rooms:
+* List all chat rooms:
 
 ```javascript
 {
   "action": "getChatRooms"
 }
 ```
-returns an array of chat room names via websocket
+returns an array of chat room-names via websocket
 
-List all Messages/Users in Room:
+* List all Messages/Users in Room:
 
 ```javascript
 {
@@ -56,7 +54,7 @@ List all Messages/Users in Room:
 ```
 returns messages ordered by time (users) via websocket
 
-Join a room, by posting a message to it as a client e.g.
+* Join a room, by posting a message to it as a client e.g.
 ```javascript
 {
   "action": "postMessage",
