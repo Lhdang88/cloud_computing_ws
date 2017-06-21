@@ -2,7 +2,7 @@
 
 Chat API-Server, default Port: 3000
 
-API:
+REST API:
 
 * [GET] /api/chats
   * returns a list of all chat-rooms (names)
@@ -14,3 +14,54 @@ API:
   * returns a list of users who have posted in :room, sorted by name
 * [POST] /api/chats/users/:user
   * post a private message to :user and return all messages with that :user, sorted by time
+
+Websocket API:
+
+connect to Websocket Endpoint /chat
+
+Websocket are in JSON format.
+
+Use actions to invoke functionalities:
+
+Posting Message in Room or Posting private Message:
+```javascript
+{
+  "action": ["postMessage" || "postPrivateMessage"],
+  "roomId": "roomId_for_postMessage",
+  //"userId": "receiverUser_for_postPrivateMessage",
+  "user": "senderUser",
+  "message": "message",
+  "meta": { "foo": "bar"} // additional data to pass
+}
+```
+returns the message posted and broadcast the posted message to users via websocket
+
+
+List all chat rooms:
+
+```javascript
+{
+  "action": "getChatRooms"
+}
+```
+returns an array of chat room names via websocket
+
+List all Messages/Users in Room:
+
+```javascript
+{
+  "action": ["getMessagesInRoom" || "getUsersInRoom"],
+  "roomId": "roomId"
+}
+```
+returns messages ordered by time (users) via websocket
+
+Join a room, by posting a message to it as a client e.g.
+```javascript
+{
+  "action": "postMessage",
+  "roomId": "Lobby",
+  "user": "user",
+  "message": "I'm joining the room"
+}
+```

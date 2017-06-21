@@ -1,0 +1,7 @@
+---
+applications:
+- name: dhbw-chat-demo
+  memory: 512M
+  disk_quota: 512MB
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+  command: node index.js
