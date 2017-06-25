@@ -26,7 +26,8 @@
     "express": "^4.15.3",
     "express-ws": "^3.0.0",
     "body-parser": "^1.17.2",
-    "mongodb": "^2.2.24"
+    "mongodb": "^2.2.24",
+    "express-basic-auth": "^1.1.1"
   },
   "keywords": [
     "dhbw",
