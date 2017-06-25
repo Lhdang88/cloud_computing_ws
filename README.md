@@ -2,7 +2,7 @@
 
 Chat API-Server, default Port: 3000
 
-REST API:
+### REST API:
 
 * [GET] /api/chats
   * returns a list of all chat-rooms (names)
@@ -15,7 +15,7 @@ REST API:
 * [POST] /api/chats/users/:user
   * post a private message to :user and return all messages with that :user, sorted by time
 
-Websocket API:
+### Websocket API:
 
 Connect to Websocket Endpoint /chat
 
@@ -63,3 +63,7 @@ returns messages ordered by time (users) via websocket
   "message": "I'm joining the room"
 }
 ```
+
+### Authentication
+
+The APIs are protected with Basic-Auth. Default credentials are 'dhbw'/'dhbw-pw', but can be overridden with env-variables: DHBW_USER, DHBW_PASSWORD.
