@@ -8,6 +8,7 @@
 const express = require('express');
 const expressWS = require('express-ws');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const env = require('./lib/environment');
 const api = require('./lib/api/base');
 
@@ -18,6 +19,7 @@ const api = require('./lib/api/base');
 let app = express();
 const ws = expressWS(app);
 app.use(bodyParser.json());
+app.use(cors());
 
 // start the http-server on port:xxxx
 app.listen(env.port, function() {
