@@ -72,7 +72,7 @@ returns the message posted and broadcasts the message to users via websocket in 
   "roomId": "roomId"
 }
 ```
-*in this format
+* in this format
 
 ```javascript
 {
