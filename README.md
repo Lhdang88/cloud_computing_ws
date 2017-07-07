@@ -33,7 +33,21 @@ Websocket are in JSON format. Declare a property named 'action' to invoke functi
   "meta": { "foo": "bar"} // additional data to pass
 }
 ```
-returns the message posted and broadcasts the message to users via websocket
+
+returns the message posted and broadcasts the message to users via websocket in this format:
+
+```javascript
+{
+  "action": "postMessage",
+  "roomId": "roomId_for_postMessage",
+  "message": {
+    "user": "userthatpostedthemessage",
+    "message": "foo bar",
+    "timestamp": "milliseconds since 1.1.1970"
+    "meta": "some meta data"
+  }
+}
+```
 
 * List all chat rooms:
 
@@ -42,17 +56,48 @@ returns the message posted and broadcasts the message to users via websocket
   "action": "getChatRooms"
 }
 ```
-returns an array of chat room-names via websocket
-
-* List all Messages/Users in Room:
+* returns an object of this format:
 
 ```javascript
 {
-  "action": ["getMessagesInRoom" || "getUsersInRoom"],
+  "action": "getChatRooms",
+  "chatRooms": [array of rooms]
+}
+```
+* List all Users in Room:
+
+```javascript
+{
+  "action": "getUsersInRoom",
   "roomId": "roomId"
 }
 ```
-returns messages ordered by time (users) via websocket
+*in this format
+
+```javascript
+{
+  "action": "getUsersInRoom",
+  "roomId": "roomId",
+  "users": [array of users]
+}
+```
+* List all Messages in Room:
+
+```javascript
+{
+  "action": "getMessagesInRoom",
+  "roomId": "roomId"
+}
+```
+* in this format (messages are oredered by timestamp)
+
+```javascript
+{
+  "action": "getMessagesInRoom",
+  "roomId": "roomId"
+  "messages": [array of messages]
+}
+```
 
 * Join a room, by posting a message to it as a client e.g.
 ```javascript
